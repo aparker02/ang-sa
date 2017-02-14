@@ -18,6 +18,10 @@ Read here about adding custom typings [ custom typings ](https://www.bennadel.co
 
 Create panels component and copy from previous project
 
+When using golden-layout, make sure to add link to external files in angular-cli.json.  If the cli is running,
+restart it.
+
+
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.26.
 
 ## Development server

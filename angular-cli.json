@@ -18,9 +18,16 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
+        "../node_modules/golden-layout/src/css/goldenlayout-base.css",
+        "../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/golden-layout/dist/goldenlayout.js",
+        "../node_modules/amcharts/dist/amcharts/amcharts.js",
+        "../node_modules/amcharts/dist/amcharts/serial.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
