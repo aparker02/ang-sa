@@ -1,4 +1,22 @@
-# AngSa
+# My steps to install
+
+create new project
+
+copy index.html from smart admin ng2-blank
+
+copy src/assets/css folder from ng2-blank to new project
+
+install 3rd party libraries
+```shell
+
+npm install --save jquery amcharts google-maps bootstrap golden-layout
+
+npm install --save-dev @types/jquery @types/amcharts @types/google-maps @types/bootstrap
+
+```
+Read here about adding custom typings [ custom typings ](https://www.bennadel.com/blog/3169-adding-custom-typings-files-d-ts-in-an-angular-2-typescript-application.htm)
+
+Create panels component and copy from previous project
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.26.
 
