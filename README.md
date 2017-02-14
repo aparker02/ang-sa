@@ -21,6 +21,19 @@ Create panels component and copy from previous project
 When using golden-layout, make sure to add link to external files in angular-cli.json.  If the cli is running,
 restart it.
 
+Added Kendo-ui manually.  It is available via npm [ Kendo ](http://docs.telerik.com/kendo-ui/intro/installation/npm)
+
+if changes are shown in the browser:
+
+```shell
+npm install --save @ngtools/webpack@1.2.4
+
+ng serve
+
+```
+per [ toni8810 ](https://github.com/angular/angular-cli/issues/2389).  Thanks Toni!
+
+
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.26.
 

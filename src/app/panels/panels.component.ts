@@ -1,6 +1,7 @@
 import { Component, OnInit, ComponentFactoryResolver, HostListener, ComponentFactory,
   ComponentRef, ViewContainerRef, ReflectiveInjector, ElementRef } from '@angular/core';
-// import { TableComponent } from '../table/table.component';
+import { DatagridComponent } from '../datagrid/datagrid.component';
+import { LineChartComponent } from '../line-chart/line-chart.component';
 // import { GraphComponent } from '../graph/graph.component';
 // import { MapComponent } from '../map/map.component';
 
@@ -24,18 +25,18 @@ export class PanelsComponent implements OnInit {
         type: 'column',
         content: [{
           type: 'component',
-          componentName: 'map',
-          componentState: { message: "Top Left" }
+          componentName: 'datagrid',
+          componentState: { message: "Top Full Width" }
         }, {
           type: 'row',
           content: [{
             type: 'component',
-            componentName: 'chart',
-            componentState: { message: "Top Right" }
+            componentName: 'line-chart',
+            componentState: { message: "Bottom Right" }
           }, {
             type: 'component',
-            componentName: 'table',
-            componentState: { message: "Bottom Right" }
+            componentName: 'map',
+            componentState: { message: "Bottom Left" }
           }]
         }]
       }]
@@ -46,20 +47,18 @@ export class PanelsComponent implements OnInit {
     //this.layout = new GoldenLayout(this.config);
      this.layout = new GoldenLayout(this.config, $(this.el.nativeElement).find("#layout"));
 
+    this.layout.registerComponent('datagrid', (container, componentState) => {
+      let factory = this.componentFactoryResolver.resolveComponentFactory(DatagridComponent);
+      var compRef = this.viewContainer.createComponent(factory);
+      container.getElement().append($(compRef.location.nativeElement));
 
-    this.layout.registerComponent('table', (container, componentState) => {
-      // let factory = this.componentFactoryResolver.resolveComponentFactory(TableComponent);
-
-      // var compRef = this.viewContainer.createComponent(factory);
-      // container.getElement().append($(compRef.location.nativeElement));
       // compRef.instance.setEventHub(this.layout.eventHub);
       //compRef.instance.message = componentState.message;
-      console.log(componentState.message);
-        container.getElement().html('<h2>' + componentState.message + '</h2>');
+      // container.getElement().html('<h2>' + componentState.message + '</h2>');
     });
-    this.layout.registerComponent('chart', (container, componentState) => {
-      // let factory = this.componentFactoryResolver.resolveComponentFactory(GraphComponent);
+    this.layout.registerComponent('map', (container, componentState) => {
 
+      // let factory = this.componentFactoryResolver.resolveComponentFactory(GraphComponent);
       // var compRef = this.viewContainer.createComponent(factory);
       // container.getElement().append($(compRef.location.nativeElement));
       // compRef.instance.setEventHub(this.layout.eventHub);
@@ -67,10 +66,10 @@ export class PanelsComponent implements OnInit {
        container.getElement().html('<h2>' + componentState.message + '</h2>');
     });
 
-    this.layout.registerComponent('map', (container, componentState) => {
-      //  let factory = this.componentFactoryResolver.resolveComponentFactory(MapComponent);
-      //  var compRef = this.viewContainer.createComponent(factory);
-      //  container.getElement().append($(compRef.location.nativeElement));
+    this.layout.registerComponent('line-chart', (container, componentState) => {
+       let factory = this.componentFactoryResolver.resolveComponentFactory(LineChartComponent);
+       var compRef = this.viewContainer.createComponent(factory);
+       container.getElement().append($(compRef.location.nativeElement));
 
       // var compRef = this.viewContainer.createComponent(factory);
       // compRef.instance.message = componentState.message;

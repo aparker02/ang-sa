@@ -6,12 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PanelsComponent } from './panels/panels.component';
 import { HomeComponent } from './home/home.component';
+import { DatagridComponent } from './datagrid/datagrid.component';
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PanelsComponent,
-    HomeComponent
+    HomeComponent,
+    DatagridComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,

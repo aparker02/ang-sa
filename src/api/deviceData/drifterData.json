@@ -1,0 +1,212 @@
+[
+    {
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-01-24 12:01:05",
+        "Latitude": 36.495517,
+        "Longitude": 169.107031,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0276",
+        "DeviceDateTime": "2017-01-24 12:01:00",
+        "Latitude": 28.610425,
+        "Longitude": 142.483136,
+        "BatteryVoltage": 10.0
+    },
+    {
+        "DeviceName": "OIST-I-0257",
+        "DeviceDateTime": "2017-01-24 12:00:35",
+        "Latitude": 19.045986,
+        "Longitude": 125.197558,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-01-24 00:01:00",
+        "Latitude": 36.495622,
+        "Longitude": 169.049311,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0276",
+        "DeviceDateTime": "2017-01-24 00:00:36",
+        "Latitude": 28.715528,
+        "Longitude": 142.440447,
+        "BatteryVoltage": 10.0
+    },
+    {
+        "DeviceName": "OIST-I-0257",
+        "DeviceDateTime": "2017-01-24 00:00:35",
+        "Latitude": 19.076969,
+        "Longitude": 125.352489,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0257",
+        "DeviceDateTime": "2017-01-23 12:01:05",
+        "Latitude": 19.252061,
+        "Longitude": 125.487853,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0276",
+        "DeviceDateTime": "2017-01-23 12:00:36",
+        "Latitude": 28.84255,
+        "Longitude": 142.283267,
+        "BatteryVoltage": 10.0
+    },
+    {
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-01-23 12:00:35",
+        "Latitude": 36.331808,
+        "Longitude": 168.772697,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-01-23 00:00:36",
+        "Latitude": 36.284383,
+        "Longitude": 168.731342,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0276",
+        "DeviceDateTime": "2017-01-23 00:00:35",
+        "Latitude": 28.954447,
+        "Longitude": 142.184456,
+        "BatteryVoltage": 10.0
+    },
+    {
+        "DeviceName": "OIST-I-0257",
+        "DeviceDateTime": "2017-01-23 00:00:35",
+        "Latitude": 19.277206,
+        "Longitude": 125.735025,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0257",
+        "DeviceDateTime": "2017-01-22 12:01:29",
+        "Latitude": 19.327353,
+        "Longitude": 125.957044,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0276",
+        "DeviceDateTime": "2017-01-22 12:00:59",
+        "Latitude": 29.102428,
+        "Longitude": 141.991108,
+        "BatteryVoltage": 10.0
+    },
+    {
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-01-22 12:00:53",
+        "Latitude": 36.356,
+        "Longitude": 168.496422,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-01-22 00:01:00",
+        "Latitude": 36.516003,
+        "Longitude": 168.234525,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0276",
+        "DeviceDateTime": "2017-01-22 00:00:58",
+        "Latitude": 29.083511,
+        "Longitude": 141.956175,
+        "BatteryVoltage": 10.0
+    },
+    {
+        "DeviceName": "OIST-I-0257",
+        "DeviceDateTime": "2017-01-22 00:00:54",
+        "Latitude": 19.451836,
+        "Longitude": 126.0946,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0276",
+        "DeviceDateTime": "2017-01-21 12:01:00",
+        "Latitude": 29.14645,
+        "Longitude": 141.909358,
+        "BatteryVoltage": 10.0
+    },
+    {
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-01-21 12:00:59",
+        "Latitude": 36.378606,
+        "Longitude": 167.982539,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0257",
+        "DeviceDateTime": "2017-01-21 12:00:35",
+        "Latitude": 19.461614,
+        "Longitude": 126.190478,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-01-21 00:01:29",
+        "Latitude": 36.243489,
+        "Longitude": 167.525889,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0257",
+        "DeviceDateTime": "2017-01-21 00:01:00",
+        "Latitude": 19.5757,
+        "Longitude": 126.356058,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0276",
+        "DeviceDateTime": "2017-01-21 00:00:35",
+        "Latitude": 29.325947,
+        "Longitude": 141.913589,
+        "BatteryVoltage": 10.0
+    },
+    {
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-01-20 12:01:53",
+        "Latitude": 35.942725,
+        "Longitude": 166.92945,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0257",
+        "DeviceDateTime": "2017-01-20 12:00:35",
+        "Latitude": 19.693369,
+        "Longitude": 126.506225,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0276",
+        "DeviceDateTime": "2017-01-20 12:00:35",
+        "Latitude": 29.489517,
+        "Longitude": 141.633039,
+        "BatteryVoltage": 10.0
+    },
+    {
+        "DeviceName": "OIST-I-0257",
+        "DeviceDateTime": "2017-01-20 00:00:36",
+        "Latitude": 19.769856,
+        "Longitude": 126.6049,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-01-20 00:00:35",
+        "Latitude": 35.499933,
+        "Longitude": 166.583642,
+        "BatteryVoltage": 10.5
+    },
+    {
+        "DeviceName": "OIST-I-0276",
+        "DeviceDateTime": "2017-01-20 00:00:35",
+        "Latitude": 29.444961,
+        "Longitude": 141.6038,
+        "BatteryVoltage": 10.0
+    }
+]
