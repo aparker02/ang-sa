@@ -28,9 +28,10 @@ export class LineChartComponent implements OnInit {
   createChart(deviceData): void {
 
     $("#chart").kendoChart({
-      
+
+
       title: {
-        text: "Gross domestic product growth \n /GDP annual %/"
+        text: ""
       },
       legend: {
         position: "bottom"

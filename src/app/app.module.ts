@@ -8,6 +8,13 @@ import { PanelsComponent } from './panels/panels.component';
 import { HomeComponent } from './home/home.component';
 import { DatagridComponent } from './datagrid/datagrid.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
+import { MainLayoutComponent } from './shared/layout/app-layouts/main-layout/main-layout.component';
+import { HeaderComponent } from './shared/layout/header/header.component';
+import { FooterComponent } from './shared/layout/footer/footer.component';
+import { NavigationComponent } from './shared/layout/navigation/navigation.component';
+import { RibbonComponent } from './shared/layout/ribbon/ribbon.component';
+import { ShortcutComponent } from './shared/layout/shortcut/shortcut.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +22,14 @@ import { LineChartComponent } from './line-chart/line-chart.component';
     PanelsComponent,
     HomeComponent,
     DatagridComponent,
-    LineChartComponent
+    LineChartComponent,
+    MainLayoutComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavigationComponent,
+    RibbonComponent,
+    ShortcutComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
