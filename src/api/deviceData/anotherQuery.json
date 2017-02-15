@@ -1,0 +1,81 @@
+//http://api.pacificgyre.com/api2/getData.aspx?UserName=tyates&Password=micro-star&DeviceNames=oist-i-0273&StartDate=02%2F12%2F2017&EndDate=02%2F14%2F2017&Headers=true&FileFormat=JSON
+[
+    {
+        "DataId": 12615086,
+        "CommId": "300234060757190",
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-02-14 12:00:35",
+        "AgeInSeconds": 43235,
+        "BatteryVoltage": 10.5,
+        "GpsQuality": 3,
+        "Latitude": 35.5768623,
+        "Longitude": 177.636734,
+        "SubmergedBoolean": true,
+        "Temperature0cm": -0.1
+    },
+    {
+        "DataId": 12611585,
+        "CommId": "300234060757190",
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-02-14 00:00:36",
+        "AgeInSeconds": 36,
+        "BatteryVoltage": 10.5,
+        "GpsQuality": 3,
+        "Latitude": 35.71506,
+        "Longitude": 177.41774,
+        "SubmergedBoolean": true,
+        "Temperature0cm": -0.1
+    },
+    {
+        "DataId": 12608335,
+        "CommId": "300234060757190",
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-02-13 12:00:35",
+        "AgeInSeconds": 43235,
+        "BatteryVoltage": 10.5,
+        "GpsQuality": 3,
+        "Latitude": 35.682827,
+        "Longitude": 177.139481,
+        "SubmergedBoolean": true,
+        "Temperature0cm": -0.1
+    },
+    {
+        "DataId": 12605522,
+        "CommId": "300234060757190",
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-02-13 00:00:36",
+        "AgeInSeconds": 36,
+        "BatteryVoltage": 10.5,
+        "GpsQuality": 3,
+        "Latitude": 35.5596771,
+        "Longitude": 176.8439,
+        "SubmergedBoolean": true,
+        "Temperature0cm": -0.1
+    },
+    {
+        "DataId": 12601893,
+        "CommId": "300234060757190",
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-02-12 12:00:36",
+        "AgeInSeconds": 43236,
+        "BatteryVoltage": 10.5,
+        "GpsQuality": 3,
+        "Latitude": 35.30781,
+        "Longitude": 176.40097,
+        "SubmergedBoolean": true,
+        "Temperature0cm": -0.1
+    },
+    {
+        "DataId": 12599444,
+        "CommId": "300234060757190",
+        "DeviceName": "OIST-I-0273",
+        "DeviceDateTime": "2017-02-12 00:00:36",
+        "AgeInSeconds": 36,
+        "BatteryVoltage": 10.5,
+        "GpsQuality": 3,
+        "Latitude": 35.2196426,
+        "Longitude": 176.027969,
+        "SubmergedBoolean": true,
+        "Temperature0cm": -0.1
+    }
+]

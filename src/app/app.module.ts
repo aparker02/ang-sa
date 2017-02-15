@@ -15,6 +15,7 @@ import { NavigationComponent } from './shared/layout/navigation/navigation.compo
 import { RibbonComponent } from './shared/layout/ribbon/ribbon.component';
 import { ShortcutComponent } from './shared/layout/shortcut/shortcut.component';
 import { MapComponent } from './map/map.component';
+import { AmchartComponent } from './amchart/amchart.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MapComponent } from './map/map.component';
     NavigationComponent,
     RibbonComponent,
     ShortcutComponent,
-    MapComponent
+    MapComponent,
+    AmchartComponent
   ],
   imports: [
     BrowserModule,

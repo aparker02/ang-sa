@@ -8,7 +8,7 @@ import { DeviceDataService } from './device-data/device-data.service';
   providers: [ DeviceDataService ]
 })
 export class AppComponent {
-  title = 'Angular 2 - Smart Admin - Golden Layout - Kendo-UI';
+  title = 'Angular 2 - Smart Admin - Golden Layout - Kendo-UI - amCharts';
 
   public constructor(private viewContainerRef: ViewContainerRef) {}
 }

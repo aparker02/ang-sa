@@ -9,6 +9,8 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class DeviceDataService {
 
+    //http://api.pacificgyre.com/api2/getData.aspx?UserName=tyates&Password=micro-star&DeviceNames=oist-i-0273&StartDate=02%2F12%2F2017&EndDate=02%2F14%2F2017&Headers=true&FileFormat=JSON
+
     //private _dataUrl = './api/data/drifterData.json';
     private _dataUrl = './api/deviceData/oneDrifter.json';
     private _deviceData: Observable<any>;

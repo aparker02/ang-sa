@@ -5,6 +5,7 @@ import { PanelsComponent } from './panels/panels.component';
 import { DatagridComponent } from './datagrid/datagrid.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { MapComponent } from './map/map.component';
+import { AmchartComponent } from './amchart/amchart.component';
 
 const routes: Routes = [
 
@@ -13,6 +14,7 @@ const routes: Routes = [
     { path: 'datagrid', component: DatagridComponent },
     { path: 'line-chart', component: LineChartComponent },
     { path: 'map', component: MapComponent },
+    { path: 'amchart', component: AmchartComponent },
 
 ];
 

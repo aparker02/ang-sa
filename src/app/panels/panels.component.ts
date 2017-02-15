@@ -3,7 +3,7 @@ import { Component, OnInit, ComponentFactoryResolver, HostListener, ComponentFac
 import { DatagridComponent } from '../datagrid/datagrid.component';
 import { LineChartComponent } from '../line-chart/line-chart.component';
 // import { GraphComponent } from '../graph/graph.component';
-// import { MapComponent } from '../map/map.component';
+import { MapComponent } from '../map/map.component';
 
 declare var $: any;
 declare var GoldenLayout: any;
@@ -58,12 +58,12 @@ export class PanelsComponent implements OnInit {
     });
     this.layout.registerComponent('map', (container, componentState) => {
 
-      // let factory = this.componentFactoryResolver.resolveComponentFactory(GraphComponent);
-      // var compRef = this.viewContainer.createComponent(factory);
-      // container.getElement().append($(compRef.location.nativeElement));
+      let factory = this.componentFactoryResolver.resolveComponentFactory(MapComponent);
+      var compRef = this.viewContainer.createComponent(factory);
+      container.getElement().append($(compRef.location.nativeElement));
       // compRef.instance.setEventHub(this.layout.eventHub);
       //compRef.instance.message = componentState.message;
-       container.getElement().html('<h2>' + componentState.message + '</h2>');
+      // container.getElement().html('<h2>' + componentState.message + '</h2>');
     });
 
     this.layout.registerComponent('line-chart', (container, componentState) => {
