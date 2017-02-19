@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 //import { Observable } from 'rxjs/Observable';
 import { DeviceDataService } from '../device-data/device-data.service';
 
-declare var $: any;
+//declare var $: any;
 
 
 
@@ -17,6 +17,9 @@ export class AmchartComponent implements OnInit {
   deviceData: any;
   config: any;
   chart: any;
+  currentName: string;
+  restructuredData: [{}];
+
 
   constructor(private el: ElementRef, private _dataService: DeviceDataService) { }
 
@@ -28,7 +31,19 @@ export class AmchartComponent implements OnInit {
       () => this.prepDataForChart(this.deviceData)
       );
   }
+
   prepDataForChart(deviceData) {
+  //  this._dataService.convertDate(deviceData);
+    let dataByDevice = this._dataService.restructureDataObj(deviceData);
+    let chartData = {};
+
+    for(var x: number = 0; x < dataByDevice.length; x++ ) {
+          console.log(dataByDevice[x].DeviceName);
+          console.log(dataByDevice[x].values[x].DeviceDateTime);
+    }
+
+    //this.chartData
+
     this.config = {
       // "dataProvider": this.chartData,
       "type": "serial",
@@ -48,23 +63,17 @@ export class AmchartComponent implements OnInit {
       "trendLines": [],
       "graphs": [
         {
-          "bullet": "round",
-          "id": "AmGraph-1",
-          "title": "graph 1",
-          "valueField": "column-1"
-        },
-        {
           "bullet": "square",
           "id": "AmGraph-2",
-          "title": "graph 2",
-          "valueField": "column-2"
+          "title": "Voltage",
+          "valueField": "column-1"
         }
       ],
       "guides": [],
       "valueAxes": [
         {
           "id": "ValueAxis-1",
-          "title": "Axis title"
+          "title": "Voltage"
         }
       ],
       "allLabels": [],
