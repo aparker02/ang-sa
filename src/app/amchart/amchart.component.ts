@@ -17,9 +17,6 @@ export class AmchartComponent implements OnInit {
   deviceData: any;
   config: any;
   chart: any;
-  currentName: string;
-  restructuredData: [{}];
-
 
   constructor(private el: ElementRef, private _dataService: DeviceDataService) { }
 
@@ -28,29 +25,22 @@ export class AmchartComponent implements OnInit {
       .subscribe(
       (deviceData) => { this.deviceData = deviceData; },
       (error) => { this.errorMessage = <any>error; },
-      () => this.prepDataForChart(this.deviceData)
+      () => this.prepData(this.deviceData)
       );
   }
 
-  prepDataForChart(deviceData) {
+  prepData(deviceData) {
 
     let deviceObj = this._dataService.restructureDataObj(deviceData);
 
     // console.log(deviceObj["OIST-I-0257"].values[0].BatteryVoltage); // This works!!
-
+    // move this to data-service
     let numberDevices = Object.keys(deviceObj).length;
     // var chartData = [];
     for (let x = 0; x < numberDevices; x++) { // loops through devices
-      //  console.log(Object.keys(deviceObj));
       let device = Object.keys(deviceObj)[x];
-      // var dataProvider = null;
       var chartData = [];
-
-      // console.log(JSON.stringify(deviceObj[device]));
-
       let numFields = deviceObj[device].values.length;
-      console.log(numFields);
-      // for (let b = 0; b < numFields; b++) {
       for (let b = numFields - 1; b > 1; b--) {
 
         var data = {
@@ -58,23 +48,11 @@ export class AmchartComponent implements OnInit {
           'date': deviceObj[device].values[b].DeviceDateTime,
           'voltage': deviceObj[device].values[b].BatteryVoltage
         };
-        // add data to some object?
-        //console.log(data);
-        var bs = JSON.stringify(data);
-        //  console.log(deviceObj[device].values[6].BatteryVoltage);
         console.log(data.name); // spits out current name
-        // var chartData = [];
         chartData.push(data);
-
-        var tempTitle = deviceObj[device].values[b].DeviceDateTime;
       }
-      //      dataProvider = JSON.stringify(chartData);
       console.log(chartData);
-
     }
-
-
-    //  let chartData = [];
 
     this.config = {
       "dataProvider": chartData,
