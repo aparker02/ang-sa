@@ -33,25 +33,57 @@ export class AmchartComponent implements OnInit {
   }
 
   prepDataForChart(deviceData) {
-  //  this._dataService.convertDate(deviceData);
-    let dataByDevice = this._dataService.restructureDataObj(deviceData);
-    let chartData = {};
 
-    for(var x: number = 0; x < dataByDevice.length; x++ ) {
-          console.log(dataByDevice[x].DeviceName);
-          console.log(dataByDevice[x].values[x].DeviceDateTime);
+    let deviceObj = this._dataService.restructureDataObj(deviceData);
+
+    // console.log(deviceObj["OIST-I-0257"].values[0].BatteryVoltage); // This works!!
+
+    let numberDevices = Object.keys(deviceObj).length;
+    // var chartData = [];
+    for (let x = 0; x < numberDevices; x++) { // loops through devices
+      //  console.log(Object.keys(deviceObj));
+      let device = Object.keys(deviceObj)[x];
+      // var dataProvider = null;
+      var chartData = [];
+
+      // console.log(JSON.stringify(deviceObj[device]));
+
+      let numFields = deviceObj[device].values.length;
+      console.log(numFields);
+      // for (let b = 0; b < numFields; b++) {
+      for (let b = numFields - 1; b > 1; b--) {
+
+        var data = {
+          'name': deviceObj[device].values[b].DeviceName,
+          'date': deviceObj[device].values[b].DeviceDateTime,
+          'voltage': deviceObj[device].values[b].BatteryVoltage
+        };
+        // add data to some object?
+        //console.log(data);
+        var bs = JSON.stringify(data);
+        //  console.log(deviceObj[device].values[6].BatteryVoltage);
+        console.log(data.name); // spits out current name
+        // var chartData = [];
+        chartData.push(data);
+
+        var tempTitle = deviceObj[device].values[b].DeviceDateTime;
+      }
+      //      dataProvider = JSON.stringify(chartData);
+      console.log(chartData);
+
     }
 
-    //this.chartData
+
+    //  let chartData = [];
 
     this.config = {
-      // "dataProvider": this.chartData,
+      "dataProvider": chartData,
       "type": "serial",
       "categoryField": "date",
       "dataDateFormat": "YYYY-MM-DD HH:MM:SS",
       "categoryAxis": {
-        "minPeriod": "hh",
-        "parseDates": true
+        "minPeriod": "DD",
+        "parseDates": false
       },
       "chartCursor": {
         "enabled": true,
@@ -61,14 +93,12 @@ export class AmchartComponent implements OnInit {
         "enabled": true
       },
       "trendLines": [],
-      "graphs": [
-        {
-          "bullet": "square",
-          "id": "AmGraph-2",
-          "title": "Voltage",
-          "valueField": "column-1"
-        }
-      ],
+      "graphs": [{
+        "lineAlpha": 1,
+        "lineThickness": 2,
+        "valueField": "voltage",
+        "lineColor": "#00a1f1"
+      }],
       "guides": [],
       "valueAxes": [
         {
@@ -86,50 +116,13 @@ export class AmchartComponent implements OnInit {
         {
           "id": "Title-1",
           "size": 15,
-          "text": "Chart Title"
-        }
-      ],
-      "dataProvider": [
-        {
-          "column-1": 8,
-          "column-2": 5,
-          "date": "2014-03-01 08:00:00"
-        },
-        {
-          "column-1": 6,
-          "column-2": 7,
-          "date": "2014-03-01 09:00:00"
-        },
-        {
-          "column-1": 2,
-          "column-2": 3,
-          "date": "2014-03-01 10:00:00"
-        },
-        {
-          "column-1": 1,
-          "column-2": 3,
-          "date": "2014-03-01 11:00:00"
-        },
-        {
-          "column-1": 2,
-          "column-2": 1,
-          "date": "2014-03-01 12:00:00"
-        },
-        {
-          "column-1": 3,
-          "column-2": 2,
-          "date": "2014-03-01 13:00:00"
-        },
-        {
-          "column-1": 6,
-          "column-2": 8,
-          "date": "2014-03-01 14:00:00"
+          "text": name
         }
       ]
     };
 
     let chartdiv = $(this.el.nativeElement).find("#amchartdiv");
-    console.log(this.config);
+    // console.log(this.config);
     if (chartdiv) {
       this.chart = AmCharts.makeChart('amchartdiv', this.config, 1);
     }
