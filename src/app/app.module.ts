@@ -17,6 +17,7 @@ import { ShortcutComponent } from './shared/layout/shortcut/shortcut.component';
 import { MapComponent } from './map/map.component';
 import { AmchartComponent } from './amchart/amchart.component';
 import { GoogleMapComponent } from './google-map/google-map.component';
+import { PanelsPt2Component } from './panels-pt2/panels-pt2.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { GoogleMapComponent } from './google-map/google-map.component';
     ShortcutComponent,
     MapComponent,
     AmchartComponent,
-    GoogleMapComponent
+    GoogleMapComponent,
+    PanelsPt2Component
   ],
   imports: [
     BrowserModule,

@@ -13,8 +13,8 @@ export class DeviceDataService {
 
     //private _dataUrl = './api/deviceData/anotherQuery.json';
 
-    //private _dataUrl = './api/deviceData/drifterData.json';
-     private _dataUrl = './api/deviceData/oneDrifter.json';
+    private _dataUrl = './api/deviceData/drifterData.json';
+    //  private _dataUrl = './api/deviceData/oneDrifter.json';
     private _deviceData: Observable<any>;
     private _errorMessage: string;
     private deviceData;
