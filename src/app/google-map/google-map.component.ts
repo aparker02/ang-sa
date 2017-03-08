@@ -26,7 +26,7 @@ export class GoogleMapComponent implements OnInit {
 
   }
   prepData(deviceData) {
-    let deviceObj = this._dataService.restructureDataObj(deviceData);
+    let deviceObj = this._dataService.restructureData(deviceData);
     // set array of markers:  https://developers.google.com/maps/documentation/javascript/examples/icon-complex
     // console.log(deviceObj["OIST-I-0257"].values[0].BatteryVoltage); // This works!!
     // move this to data-service
@@ -44,7 +44,7 @@ export class GoogleMapComponent implements OnInit {
           'latitude': deviceObj[device].values[b].Latitude,
           'longitude': deviceObj[device].values[b].Longitude
         };
-        console.log(data.name); // spits out current name
+        console.log(data); // spits out current name
         chartData.push(data);
       }
 
@@ -63,7 +63,7 @@ export class GoogleMapComponent implements OnInit {
         title: 'remote island'
       });
 
-      console.log(chartData);
+      //console.log(chartData);
 
     }
 

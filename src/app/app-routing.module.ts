@@ -8,6 +8,8 @@ import { MapComponent } from './map/map.component';
 import { AmchartComponent } from './amchart/amchart.component';
 import { GoogleMapComponent } from './google-map/google-map.component';
 import { PanelsPt2Component } from './panels-pt2/panels-pt2.component';
+import { KendoComponentsComponent } from './kendo-components/kendo-components.component';
+import { LineChart2Component } from './line-chart2/line-chart2.component';
 
 
 const routes: Routes = [
@@ -19,7 +21,9 @@ const routes: Routes = [
     { path: 'map', component: MapComponent },
     { path: 'amchart', component: AmchartComponent },
     { path: 'google-map', component: GoogleMapComponent },
-    { path: 'panels-pt2', component: PanelsPt2Component }
+    { path: 'panels-pt2', component: PanelsPt2Component },
+    { path: 'kendo-components', component: KendoComponentsComponent },
+    { path: 'line-chart2', component: LineChart2Component }
 
 ];
 

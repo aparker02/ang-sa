@@ -31,7 +31,7 @@ export class AmchartComponent implements OnInit {
 
   prepData(deviceData) {
 
-    let deviceObj = this._dataService.restructureDataObj(deviceData);
+    let deviceObj = this._dataService.restructureData(deviceData);
 
     // console.log(deviceObj["OIST-I-0257"].values[0].BatteryVoltage); // This works!!
     // move this to data-service

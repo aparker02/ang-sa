@@ -18,6 +18,9 @@ import { MapComponent } from './map/map.component';
 import { AmchartComponent } from './amchart/amchart.component';
 import { GoogleMapComponent } from './google-map/google-map.component';
 import { PanelsPt2Component } from './panels-pt2/panels-pt2.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
+import { KendoComponentsComponent } from './kendo-components/kendo-components.component';
+import { LineChart2Component } from './line-chart2/line-chart2.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { PanelsPt2Component } from './panels-pt2/panels-pt2.component';
     MapComponent,
     AmchartComponent,
     GoogleMapComponent,
-    PanelsPt2Component
+    PanelsPt2Component,
+    DatePickerComponent,
+    KendoComponentsComponent,
+    LineChart2Component
   ],
   imports: [
     BrowserModule,

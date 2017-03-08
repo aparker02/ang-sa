@@ -9,12 +9,12 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class DeviceDataService {
 
-    //http://api.pacificgyre.com/api2/getData.aspx?UserName=tyates&Password=micro-star&DeviceNames=oist-i-0273&StartDate=02%2F12%2F2017&EndDate=02%2F14%2F2017&Headers=true&FileFormat=JSON
+    //private _dataUrl = 'http://api.pacificgyre.com/api2/getData.aspx?userName=&password=&deviceNames=UW-TC-1W-0003,UW-TC-1W-0004,UW-TC-1W-0006,UW-TC-37IM-0013,UW-TC-37IM-0015&startDate=02/22/2017&endDate=03/01/2017&fileFormat=JSON';
 
+    private _dataUrl = './api/deviceData/drifter-UWTC.json';
     //private _dataUrl = './api/deviceData/anotherQuery.json';
-
-    private _dataUrl = './api/deviceData/drifterData.json';
-    //  private _dataUrl = './api/deviceData/oneDrifter.json';
+    //private _dataUrl = './api/deviceData/drifterData.json';
+    //private _dataUrl = './api/deviceData/oneDrifter.json';
     private _deviceData: Observable<any>;
     private _errorMessage: string;
     private deviceData;
@@ -27,80 +27,78 @@ export class DeviceDataService {
             .catch(this._handleError);
     }
 
-    // Based loosely on http://stackoverflow.com/questions/33260271/restructure-a-json-object
-    restructureDataObj(deviceData) {
+    // Based on stackoverflow.com/questions/33260271/restructure-a-json-object
+    restructureData(deviceData) {
+        var values = [];
+        var deviceObject = {};
+        var dataArray = [];
 
-        // console.log(Object.keys(deviceData[0]));                    // ["DeviceName", "DeviceDateTime", "Latitude", etc]
-        // console.log(Object.keys(deviceData[0]).length);             // 5
-        // console.log(Object.keys(deviceData[0].DeviceName));         // ["0", "1", "2", ... "10"]
+        var obj = {
+            'device': [{
+                'date': {
+                    'values': []
+                }
+            }]
+        };
 
-        // console.log(deviceData[0].DeviceName);                      // OIST-I-0273
-        // console.log(deviceData[0]['DeviceName']);                   // OIST-I-0273
-        // console.log(Object.keys(deviceData[0]).length);             // 5  Total number of values per object
-        // console.log(Object.keys(deviceData[0].DeviceName).length);  // 11 Total Objects with DeviceName ?
-        // console.log(deviceData.length);                             // 30 total name/value pairs
+        for (var item in deviceData) {
 
-        let deviceArray = [];
-        var deviceObj = {};
+            var deviceName = deviceData[item].DeviceName;
+            var dateTime = deviceData[item].DeviceDateTime;
 
-        for (let x = 0; x < deviceData.length; x++) {
-
-            let currentDevice = deviceData[x].DeviceName;
-            let currentDate = deviceData[x].DeviceDateTime;
-
-            if (!deviceObj.hasOwnProperty(currentDevice)) {
-                // deviceObj[currentDevice] = {}
-                // deviceObj[currentDevice][currentDate] = {
-                //     "values": deviceData[x]
-                // }
-
-                deviceObj[currentDevice] = {
-                    "values" : []
+            // create a new property if matching one doesn't exist already WORKING
+            if (!deviceObject.hasOwnProperty(deviceName)) {
+                deviceObject[deviceName] = {
+                    "deviceName": deviceData[item].DeviceName,
+                    "values": []
                 };
-                // deviceObj[currentDevice][currentDate] = {
-                //     "values": deviceData[x]
-                // }
             }
-            //console.log(deviceObj[x]);
-            deviceObj[currentDevice].values.push(deviceData[x]);
-            // ["OIST-I-0257"].values["0"].BatteryVoltage
+            // if (!deviceObject.hasOwnProperty(deviceName)) { // CLOSER
+            //     deviceObject[deviceName] = {
+            //         "deviceName": deviceName,
+            //         "dates": {
+            //             "dateTime": dateTime,
+            //             "values": []
+            //         }
+            //     };
+            // }
+            // if (!deviceObject.hasOwnProperty(deviceName)) { // EXPERIMENT ... nope
+            //     deviceObject[deviceName] = {
+            //         "deviceName": deviceName,
+            //         "dates": [{
+            //             "dateTime": dateTime,
+            //             "values": []
+            //         }]
+            //     };
+            // }
 
             // else {
-            //     deviceObj[currentDevice][currentDate] = {
-            //         "values": deviceData[x]
-            //     }
+            //     deviceObject[deviceName][dateTime] = {
+            //         "dates": [{
+            //             "dateTime": dateTime,
+            //             "values": []
+            //         }]
+
+            //     };
             // }
+            // console.log(deviceObject[deviceName]['values']);
+            deviceObject[deviceName]['values'].push(deviceData[item]);
         }
-      //   console.log(deviceObj)
-        return deviceObj;
-    }
-
-    convertDate(deviceData) {
-        for (var i = 0; i < deviceData.length; i++) {
-            console.log(deviceData[i].DeviceDateTime);
-            deviceData[i].DeviceDateTime = new Date(deviceData[i].DeviceDateTime);
-            // deviceData[i].DeviceDateTime = deviceData[i].DeviceDateTime.substring(0, 10);
-        }
-        return deviceData;
-    }
-    // https://jsfiddle.net/lalatino/mcuzr/
-    sortByDescDate(deviceData) {
-        var arr = [];
-        var prop;
-        for (prop in deviceData) {
-            if (deviceData.hasOwnProperty(prop)) {
-                arr.push({
-                    'key': prop,
-                    'value': deviceData[prop]
-                });
-
-            }
-        }
-        arr.sort(function (a, b) {
-            return a.value - b.value;
+        // console.log(deviceObject);
+        // map the temp object to a final results array
+        var results = Object.keys(deviceObject).map(function (key) {
+            return deviceObject[key];
         });
-        console.log(arr);
-        return arr; // returns array
+        return results;
+
+    }
+
+    createArraysForChart(results){
+        // for each object
+        // grab device name, dt, bv, gps etc
+        
+
+
     }
 
     private _handleError(error: Response) {
@@ -109,3 +107,13 @@ export class DeviceDataService {
 
     }
 }
+
+// console.log(Object.keys(deviceData[0]));                    // ["DeviceName", "DeviceDateTime", "Latitude", etc]
+// console.log(Object.keys(deviceData[0]).length);             // 5
+// console.log(Object.keys(deviceData[0].DeviceName));         // ["0", "1", "2", ... "10"]
+// console.log(deviceData[0].DeviceName);                      // OIST-I-0273
+// console.log(deviceData[0]['DeviceName']);                   // OIST-I-0273
+// console.log(Object.keys(deviceData[0]).length);             // 5  Total number of values per object
+// console.log(Object.keys(deviceData[0].DeviceName).length);  // 11 Total Objects with DeviceName ?
+// console.log(deviceData.length);                             // 30 total key/value pairs
+

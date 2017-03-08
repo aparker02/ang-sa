@@ -40,12 +40,13 @@
 
     // {
     //     "DeviceName": "OIST-I-0276",
-    //     "Values": [{
-    //         "DeviceDateTime": "2017-01-20 00:00:35",
-    //         "Latitude": 29.444961,
-    //         "Longitude": 141.6038,
-    //         "BatteryVoltage": 10.0
-    //          },
+    //     "Dates": [{ "DeviceDateTime": "2017-01-20 00:00:35",
+    //                  "Values": [{
+    //              "Latitude": 29.444961,
+    //              "Longitude": 141.6038,
+    //              "BatteryVoltage": 10.0
+    //          }]
+    //         },
     //         {
     //         "DeviceDateTime": "2017-01-20 00:00:35",
     //         "Latitude": 29.444961,

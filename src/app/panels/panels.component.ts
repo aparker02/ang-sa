@@ -11,7 +11,7 @@ declare var GoldenLayout: any;
 @Component({
   selector: 'app-panels',
   templateUrl: './panels.component.html',
-  styles: ['#layout { height: 800px; }']
+  styles: ['#layout { height: 800px; } .lm_content { overflow: scroll; /*need to fix scroll on grid*/ }']
 })
 export class PanelsComponent implements OnInit {
 

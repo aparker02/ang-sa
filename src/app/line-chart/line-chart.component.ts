@@ -22,16 +22,36 @@ export class LineChartComponent implements OnInit {
       .subscribe(
       (deviceData) => { this.deviceData = deviceData; },
       (error) => { this.errorMessage = <any>error; },
-      () => this.createChart(this.deviceData)
+      () => this.newChart(this.deviceData)
       );
   }
-  createChart(deviceData): void {
+
+  newChart(deviceData): void {
+    // stackoverflow.com/questions/33260271/restructure-a-json-object
+    var results = this._dataService.restructureData(deviceData);
+    this.manipulateChartData(results); // working but need better solution
+  } // end of newChart method
+
+  manipulateChartData(results) { // working but ugly
+    var pressureData = [];
+    var voltageData = [];
+    var dateData = [];
+    for (var i = 0; i < results.length; i++) {
+      for (var j = 0; j < 5; j++) {
+        var name = results[i].deviceName;
+        pressureData.push(results[i]['values'][j].BarometricPressure);
+        voltageData.push(results[i]['values'][j].BatteryVoltage);
+        dateData.push(results[i]['values'][j].DeviceDateTime);
+      }
+    }
+    this.createChart(dateData, name, voltageData);
+  }
+
+  createChart(dateData, name, voltageData): void {
 
     $("#chart").kendoChart({
-
-
       title: {
-        text: ""
+        text: "Pressure"
       },
       legend: {
         position: "bottom"
@@ -44,8 +64,8 @@ export class LineChartComponent implements OnInit {
         style: "smooth"
       },
       series: [{
-        name: "India",
-        data: [3.907, 7.943, 7.848, 9.284, 9.263, 9.801, 3.890, 8.238, 9.552, 6.855]
+        name: name,
+        data: voltageData
       }, {
         name: "World",
         data: [1.988, 2.733, 3.994, 3.464, 4.001, 3.939, 1.333, -2.245, 4.339, 2.727]
@@ -58,7 +78,7 @@ export class LineChartComponent implements OnInit {
       }],
       valueAxis: {
         labels: {
-          format: "{0}%"
+          format: "{0}"
         },
         line: {
           visible: false
@@ -66,7 +86,7 @@ export class LineChartComponent implements OnInit {
         axisCrossingValue: -10
       },
       categoryAxis: {
-        categories: [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011],
+        categories: [2002, 2003, 2004, 2005],
         majorGridLines: {
           visible: false
         },
@@ -76,14 +96,14 @@ export class LineChartComponent implements OnInit {
       },
       tooltip: {
         visible: true,
-        format: "{0}%",
+        format: "{0}",
         template: "#= series.name #: #= value #"
       }
     });
   }
 
-//  $(document).ready(createChart);
- // $(document).bind("kendo:skinChange", createChart);
+  //  $(document).ready(createChart);
+  // $(document).bind("kendo:skinChange", createChart);
 
 }
 
