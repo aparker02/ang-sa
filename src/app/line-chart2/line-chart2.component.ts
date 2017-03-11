@@ -8,7 +8,7 @@ declare var kendoChart: any;
 
 @Component({
   selector: 'app-line-chart2',
-  template: '<div id="chart"></div><div id="chart2"></div>',
+  template: '<div id="chart"></div><button id="pdf">Save to PDF</button><div id="chart2"></div>',
   styleUrls: ['./line-chart2.component.css']
 })
 export class LineChart2Component implements OnInit {
@@ -26,6 +26,8 @@ export class LineChart2Component implements OnInit {
       () => this.createChart(this.deviceData)
       );
   }
+
+
 
   createChart(deviceData) {
     var results = this._dataService.restructureData(deviceData);
@@ -45,6 +47,26 @@ export class LineChart2Component implements OnInit {
     var tempPod10 = [];
     var tempPod11 = [];
     var tempPod12 = [];
+
+    var axisMin = 0;
+    var axisMax = 10;
+
+    function updateRange(e) {
+      axisMin = e.axisRanges.axis.min;
+      axisMax = e.axisRanges.axis.max;
+    }
+
+    function restoreRange(e) {
+      e.sender.options.categoryAxis.min = axisMin;
+      e.sender.options.categoryAxis.max = axisMax;
+    }
+    function onSeriesClick(e) {
+      var index = e.series.data.indexOf(e.dataItem); // YES YES YES
+      var chart = $("#chart").data("kendoChart");
+      chart.toggleHighlight(true, e.series.name);
+      console.log(e.dataItem + " " + index + " " + e.value.x);
+      //chart.saveAsPDF();
+    }
 
     // hacky hacky hacky
 
@@ -71,8 +93,14 @@ export class LineChart2Component implements OnInit {
     }
 
     $("#chart").kendoChart({
+      theme: "Flat",
+   //  renderAs: "canvas",
+      seriesClick: onSeriesClick,
       dataSource: {
         data: results
+      },
+      dataBound: function(e) {
+        console.log("databound?");
       },
       title: {
         text: results[0].deviceName
@@ -84,7 +112,7 @@ export class LineChart2Component implements OnInit {
       series: [{
         name: "GpsQuality",
         data: gpsQualityData,
-        axis: "gpsquality"
+        axis: "gpsquality",
       }, {
         name: "BatteryVoltage",
         data: voltageData,
@@ -98,31 +126,69 @@ export class LineChart2Component implements OnInit {
         position: "bottom"
       },
       categoryAxis: {
-        baseUnit: "days",
-        categories: dateData
+        baseUnit: "hours",
+        categories: dateData,
+        majorGridLines: {
+          visible: true,
+          step: 6
+        },
+        minorGridLines: {
+          visible: false
+        },
+        labels: {
+          step: 6,
+          template: "#=kendo.toString(value, 'MM/dd \\n HH:ss')#",
+          rotation: "auto",
+        }
       },
       valueAxis: [{
         name: "gpsquality",
         labels: {
-          format: "{0}"
-        }
+          format: "{0:0.0}"
+        },
+        color: "rgb(16, 196, 178)"
       }, {
         name: "batteryvoltage",
         labels: {
-          format: "{0}"
-        }
+          format: "{0:0.0}"
+        },
+        color: "rgb(255, 118, 99)"
       },
       {
         name: "BarometricPressure",
         labels: {
-          format: "{0}"
-        }
+          format: "{0:0.0}"
+        },
+        color: "rgb(255, 183, 79)" // multiply by fraction to darken
       }],
       tooltip: {
+     //   shared: true,
         visible: true,
         format: "{0}",
-        template: "#= series.name #: #= value #"
-      }
+        template: "#= series.name #: #= value # #= series.data.indexOf(value) #"
+      },
+      zoomable: {
+        mousewheel: {
+     //     lock: "y"
+        },
+        selection: {
+    //      lock: "y"
+        }
+      },
+      pannable: {
+            lock: "y"
+      },
+      //     zoomable: {
+      //       mousewheel: {
+      //         lock: "y"
+      //       },
+      //       selection: {
+      //         lock: "y"
+      //       }
+      //     },
+      // zoom: updateRange,
+      // drag: updateRange,
+      // dataBound: restoreRange
     });
     $("#chart2").kendoChart({
       dataSource: {
@@ -216,5 +282,6 @@ export class LineChart2Component implements OnInit {
     });
 
   }
+
 }
 

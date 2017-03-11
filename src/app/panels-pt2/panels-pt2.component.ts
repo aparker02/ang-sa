@@ -22,7 +22,9 @@ export class PanelsPt2Component implements OnInit {
     this.config = {
       content: [{
         type: 'column',
+        isClosable: false,
         content: [{
+          isClosable: false, // popouts return to their prev position - but this is not ideal
           type: 'component',
           componentName: 'datagrid',
           componentState: { message: "Top Full Width" }

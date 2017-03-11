@@ -8,8 +8,8 @@ import { DeviceDataService } from '../device-data/device-data.service';
 
 @Component({
   selector: 'app-amchart',
-  template: '<div id="amchartdiv"></div>',
-  styles: ['#amchartdiv { height: 800px; }']
+  template: '<div id="amchartdiv">Yo Joe</div>',
+  styles: ['#amchartdiv { height: 800px; color: white; }']
 })
 export class AmchartComponent implements OnInit {
 
@@ -21,12 +21,13 @@ export class AmchartComponent implements OnInit {
   constructor(private el: ElementRef, private _dataService: DeviceDataService) { }
 
   ngOnInit() {
-    this._dataService.getData()
-      .subscribe(
-      (deviceData) => { this.deviceData = deviceData; },
-      (error) => { this.errorMessage = <any>error; },
-      () => this.prepData(this.deviceData)
-      );
+    // this._dataService.getData()
+    //   .subscribe(
+    //   (deviceData) => { this.deviceData = deviceData; },
+    //   (error) => { this.errorMessage = <any>error; },
+    //   () => this.prepData(this.deviceData)
+    //   );
+    console.log("hi");
   }
 
   prepData(deviceData) {
