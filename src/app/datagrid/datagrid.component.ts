@@ -36,7 +36,7 @@ export class DatagridComponent implements OnInit {
       reorderable: true,
       sortable: { mode: "multiple" },
       selectable: "multiple row",
-      //scrollable: true,
+      scrollable: false,
       // pageable: true,
       columns: [
         { field: "DeviceName", title: "Device Name" },

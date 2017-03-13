@@ -8,7 +8,7 @@ declare var kendoChart: any;
 
 @Component({
   selector: 'app-line-chart2',
-  template: '<div id="chart"></div><button id="pdf">Save to PDF</button><div id="chart2"></div>',
+  template: '<div id="chart"></div><button id="pdf">Save as PDF</button><div id="chart2"></div>',
   styleUrls: ['./line-chart2.component.css']
 })
 export class LineChart2Component implements OnInit {
@@ -25,10 +25,11 @@ export class LineChart2Component implements OnInit {
       (error) => { this.errorMessage = <any>error; },
       () => this.createChart(this.deviceData)
       );
+    $("#pdf").click(function () {
+      var chart = $("#chart").data("kendoChart");
+      chart.saveAsPDF();
+    });
   }
-
-
-
   createChart(deviceData) {
     var results = this._dataService.restructureData(deviceData);
     var dateData = [];
@@ -65,7 +66,6 @@ export class LineChart2Component implements OnInit {
       var chart = $("#chart").data("kendoChart");
       chart.toggleHighlight(true, e.series.name);
       console.log(e.dataItem + " " + index + " " + e.value.x);
-      //chart.saveAsPDF();
     }
 
     // hacky hacky hacky
@@ -94,13 +94,10 @@ export class LineChart2Component implements OnInit {
 
     $("#chart").kendoChart({
       theme: "Flat",
-   //  renderAs: "canvas",
+      //  renderAs: "canvas",
       seriesClick: onSeriesClick,
       dataSource: {
         data: results
-      },
-      dataBound: function(e) {
-        console.log("databound?");
       },
       title: {
         text: results[0].deviceName
@@ -162,30 +159,22 @@ export class LineChart2Component implements OnInit {
         color: "rgb(255, 183, 79)" // multiply by fraction to darken
       }],
       tooltip: {
-     //   shared: true,
+        //   shared: true,
         visible: true,
         format: "{0}",
         template: "#= series.name #: #= value # #= series.data.indexOf(value) #"
       },
       zoomable: {
         mousewheel: {
-     //     lock: "y"
+          //     lock: "y"
         },
         selection: {
-    //      lock: "y"
+          //      lock: "y"
         }
       },
       pannable: {
-            lock: "y"
+        // lock: "y"
       },
-      //     zoomable: {
-      //       mousewheel: {
-      //         lock: "y"
-      //       },
-      //       selection: {
-      //         lock: "y"
-      //       }
-      //     },
       // zoom: updateRange,
       // drag: updateRange,
       // dataBound: restoreRange
